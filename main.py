@@ -1,10 +1,11 @@
+import sys
+print(sys.executable)
+print(sys.path)
 from flask import Flask, request, g
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 import hashlib
-import sys
-print(sys.executable)
-print(sys.path)
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  # Use SQLite for simplicity
