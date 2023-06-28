@@ -33,7 +33,6 @@ class Transaction(db.Model):
     transaction_type = db.Column(db.Integer, default=1)
     status = db.Column(db.Integer, default=1)
 
-@app.before_first_request
 def create_tables():
     db.create_all()
 
@@ -115,4 +114,5 @@ def get_transaction(transaction_id):
     }
 
 if __name__ == "__main__":
+    create_tables()
     app.run(debug=True)
