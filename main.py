@@ -8,7 +8,7 @@ import hashlib
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///app.db'  # Use SQLite for simplicity
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://otc_db:otc_db123@127.0.0.1:3368/otc_db'
 db = SQLAlchemy(app)
 
 class User(db.Model):
