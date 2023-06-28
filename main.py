@@ -114,5 +114,6 @@ def get_transaction(transaction_id):
     }
 
 if __name__ == "__main__":
-    create_tables()
+    with app.app_context():
+        create_tables()
     app.run(debug=True)
