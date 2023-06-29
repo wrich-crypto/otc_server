@@ -5,6 +5,7 @@ from flask import Flask, request, g
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 import hashlib
+from flask import jsonify
 
 
 app = Flask(__name__)
@@ -114,6 +115,34 @@ def get_transaction(transaction_id):
         "transaction_type": transaction.transaction_type,
         "status": transaction.status,
     }
+
+
+@app.route('/transactions', methods=['GET'])
+def get_transactions():
+    page = request.args.get('page', 1, type=int)
+    pagesize = request.args.get('pagesize', 10, type=int)
+    transactions = Transaction.query.paginate(page, pagesize, False)
+    transactions_list = []
+    for transaction in transactions.items:
+        transactions_list.append({
+            "id": transaction.id,
+            "content": transaction.content,
+            "amount": transaction.amount,
+            "money": transaction.money,
+            "unit": transaction.unit,
+            "user_id": transaction.user_id,
+            "contact": transaction.contact,
+            "created_at": transaction.created_at,
+            "end_time": transaction.end_time,
+            "transaction_type": transaction.transaction_type,
+            "status": transaction.status,
+        })
+    return jsonify({
+        'transactions': transactions_list,
+        'total_pages': transactions.pages,
+        'current_page': transactions.page
+    })
+
 
 if __name__ == "__main__":
     with app.app_context():
