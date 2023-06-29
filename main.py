@@ -121,7 +121,7 @@ def get_transaction(transaction_id):
 def get_transactions():
     page = request.args.get('page', 1, type=int)
     pagesize = request.args.get('pagesize', 10, type=int)
-    transactions = Transaction.query.paginate(page, pagesize, False)
+    transactions = Transaction.query.paginate(page=page, per_page=pagesize, error_out=False)
     transactions_list = []
     for transaction in transactions.items:
         transactions_list.append({
