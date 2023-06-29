@@ -38,6 +38,8 @@ def create_tables():
 
 @app.before_request
 def before_request():
+    if request.path in ['/login', '/users']:
+        return
     token = request.headers.get('Authorization')
     if not token:
         return {"error": "No token provided"}, 401

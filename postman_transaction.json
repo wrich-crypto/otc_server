@@ -1,0 +1,52 @@
+{
+    "name": "Create Transaction",
+    "request": {
+        "method": "POST",
+        "header": [
+            {
+                "key": "Content-Type",
+                "value": "application/json"
+            },
+            {
+                "key": "Authorization",
+                "value": "{your_token_here}"
+            }
+        ],
+        "body": {
+            "mode": "raw",
+            "raw": "{\"content\": \"test transaction\", \"amount\": 10, \"money\": 100, \"contact\": \"test contact\", \"end_time\": \"2023-06-26T15:00:00\"}"
+        },
+        "url": {
+            "raw": "http://localhost:5000/transactions",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["transactions"]
+        }
+    },
+    "response": []
+},
+{
+    "name": "Get Transaction",
+    "request": {
+        "method": "GET",
+        "header": [
+            {
+                "key": "Content-Type",
+                "value": "application/json"
+            },
+            {
+                "key": "Authorization",
+                "value": "{your_token_here}"
+            }
+        ],
+        "url": {
+            "raw": "http://localhost:5000/transactions/1",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["transactions","1"]
+        }
+    },
+    "response": []
+}
