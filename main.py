@@ -14,7 +14,7 @@ logging.basicConfig(filename=os.path.join(log_directory, f"{datetime.now().strft
                     format='%(asctime)s %(levelname)s %(name)s %(threadName)s : %(message)s')
 
 # Load configurations from config.json
-with open('D:\code\otc_server\config.json') as config_file:
+with open('config.json') as config_file:
     config_data = json.load(config_file)
 
 app = Flask(__name__)
