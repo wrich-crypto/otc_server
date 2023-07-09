@@ -129,7 +129,7 @@ def buyList():
         return json.dumps({'error': str(e)}), 500
 
 @app.route('/selllist', methods=['GET'])
-def buyList():
+def sellList():
     logging.info('Received request for sell list')
 
     try:
