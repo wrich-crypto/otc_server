@@ -128,6 +128,18 @@ def buyList():
         logging.error(f'Exception occurred during buy list: {str(e)}')
         return json.dumps({'error': str(e)}), 500
 
+@app.route('/selllist', methods=['GET'])
+def buyList():
+    logging.info('Received request for sell list')
+
+    try:
+        transactions = Transaction.query.filter_by(type='sell').all()
+        transaction_list = [transaction.to_dict() for transaction in transactions]
+        return json.dumps(transaction_list), 200
+    except Exception as e:
+        logging.error(f'Exception occurred during sell list: {str(e)}')
+        return json.dumps({'error': str(e)}), 500
+
 @app.route('/confirm', methods=['POST'])
 def confirm():
     _data = json.loads(request.data)
