@@ -52,7 +52,7 @@ class Transaction(db.Model):
             'type': self.type,
             'count': self.count,
             'user_id': self.user_id,
-            'created_at': self.created_at,
+            'created_at': self.created_at.isoformat() if self.created_at else None,
             'status': self.status
         }
 
