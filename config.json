@@ -1,0 +1,9 @@
+{
+  "flask": {
+    "DEBUG": true,
+    "ENV": "development",
+    "SECRET_KEY": "",
+    "SQLALCHEMY_DATABASE_URI": "mysql+pymysql://otc_db:otc_db123@127.0.0.1:3306/otc_db",
+    "SQLALCHEMY_TRACK_MODIFICATIONS": false
+  }
+}
