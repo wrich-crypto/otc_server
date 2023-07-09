@@ -30,6 +30,10 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     address = db.Column(db.String(128), unique=True, nullable=False)
     name = db.Column(db.String(64), nullable=False)
+    contact = db.Column(db.String(128), nullable=True) # New field for contact
+    created_at = db.Column(db.DateTime, default=datetime.utcnow) # New field for created_at
+    role = db.Column(db.Integer, default=1) # New field for role (1 for user, 2 for admin, 3 for blacklisted)
+    status = db.Column(db.Integer, default=1) # New field for status (1 for active, 2 for deleted)
 
 class Transaction(db.Model):
     __tablename__ = 'transactions'
@@ -38,6 +42,8 @@ class Transaction(db.Model):
     type = db.Column(db.String(64), nullable=False)
     count = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    created_at = db.Column(db.DateTime, default=datetime.utcnow) # New field for created_at
+    status = db.Column(db.Integer, default=1) # New field for status (1 for active, 2 for deleted)
 
     def to_dict(self):
         return {
@@ -46,6 +52,8 @@ class Transaction(db.Model):
             'type': self.type,
             'count': self.count,
             'user_id': self.user_id,
+            'created_at': self.created_at,
+            'status': self.status
         }
 
 @app.route('/login', methods=['POST'])

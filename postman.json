@@ -1,134 +1,116 @@
 {
-	"info": {
-		"_postman_id": "5f5c1a1f-16db-4a44-9b34-2e7964938bfb",
-		"name": "Flask API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
-	},
-	"item": [
-		{
-			"name": "Create User",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"account\": \"testuser\",\"password\": \"testpassword\",\"phone\": \"123456789\",\"wechat\": \"testwechat\"}"
-				},
-				"url": {
-					"raw": "http://localhost:5000/users",
-					"protocol": "http",
-					"host": ["localhost"],
-					"port": "5000",
-					"path": ["users"]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\"account\": \"testuser\",\"password\": \"testpassword\"}"
-				},
-				"url": {
-					"raw": "http://localhost:5000/login",
-					"protocol": "http",
-					"host": ["localhost"],
-					"port": "5000",
-					"path": ["login"]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Get User",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					},
-					{
-						"key": "Authorization",
-						"value": "{your_token_here}"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:5000/users/1",
-					"protocol": "http",
-					"host": ["localhost"],
-					"port": "5000",
-					"path": ["users","1"]
-				}
-			},
-			"response": []
-		},
-		{
-    "name": "Create Transaction",
-    "request": {
-        "method": "POST",
-        "header": [
-            {
-                "key": "Content-Type",
-                "value": "application/json"
-            },
-            {
-                "key": "Authorization",
-                "value": "{your_token_here}"
+    "info": {
+        "_postman_id": "a0cb1f0a-1813-4a4a-981d-6f1dd0d2f6c7",
+        "name": "OTC Server API Collection",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Login",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"address\": \"sample_address\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/login",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "login"
+                    ]
+                }
             }
-        ],
-        "body": {
-            "mode": "raw",
-            "raw": "{\"content\": \"test transaction\", \"amount\": 10, \"money\": 100, \"contact\": \"test contact\", \"end_time\": \"2023-06-26T15:00:00\"}"
         },
-        "url": {
-            "raw": "http://localhost:5000/transactions",
-            "protocol": "http",
-            "host": ["localhost"],
-            "port": "5000",
-            "path": ["transactions"]
-        }
-    },
-    "response": []
-},
-{
-    "name": "Get Transaction",
-    "request": {
-        "method": "GET",
-        "header": [
-            {
-                "key": "Content-Type",
-                "value": "application/json"
-            },
-            {
-                "key": "Authorization",
-                "value": "{your_token_here}"
+        {
+            "name": "Add Transaction",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"sample_name\",\n    \"type\": \"sample_type\",\n    \"count\": 1,\n    \"user_id\": 1\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/add",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "add"
+                    ]
+                }
             }
-        ],
-        "url": {
-            "raw": "http://localhost:5000/transactions/1",
-            "protocol": "http",
-            "host": ["localhost"],
-            "port": "5000",
-            "path": ["transactions","1"]
+        },
+        {
+            "name": "Search Transactions",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"name\": \"sample_name\",\n    \"type\": \"sample_type\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/search",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "search"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Get Buy List",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                    "raw": "http://localhost:5000/buylist",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "buylist"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Confirm Transaction",
+            "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"transaction_id\": 1\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:5000/confirm",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "5000",
+                    "path": [
+                        "confirm"
+                    ]
+                }
+            }
         }
-    },
-    "response": []
-}
-
-	]
+    ],
+    "protocolProfileBehavior": {}
 }
